@@ -79,7 +79,7 @@ if st.session_state["image"]:
     st.session_state["base64_image"] = base64.b64encode(img_bytes).decode("utf-8")
 
 # --- OPENAI CLIENT ---
-client_openai = OpenAI(st.secrets["openai"]["api_key"])
+client_openai = OpenAI(api_key = st.secrets["openai"]["api_key"])
 def extract_macros(response_text):
     """Extracts total calories, protein, carbs, and fat from the text."""
     
