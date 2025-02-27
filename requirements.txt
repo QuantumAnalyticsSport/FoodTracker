@@ -2,6 +2,5 @@ streamlit
 pandas
 gspread
 oauth2client
-PIL
 base64
 openai
