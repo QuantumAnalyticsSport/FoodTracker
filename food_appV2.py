@@ -116,6 +116,7 @@ def analyze_food():
     - **Total Carbohydrates :** (total of Carbohydrates)g
     - **Total Fat:** (total of Fat)g
     - **Total Protein:** (total of Protein)g
+    careful I put a max_tokens=500 and the **Total Nutrition Summary:** is mandatory to get the analysis 
     """
 
     response = client_openai.chat.completions.create(
