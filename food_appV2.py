@@ -12,7 +12,10 @@ from openai import OpenAI
 
 # --- CONFIGURATION ---
 GOOGLE_SHEET_NAME = "Food_database"
-CREDENTIALS_FILE = "creds.json"  # Replace with actual credentials file
+# CREDENTIALS_FILE = "creds.json"  # Replace with actual credentials file
+
+CREDENTIALS_FILE = st.secrets["creds"] 
+
 
 # --- SET UP GOOGLE SHEETS CONNECTION ---
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
