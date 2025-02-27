@@ -14,18 +14,18 @@ from openai import OpenAI
 GOOGLE_SHEET_NAME = "Food_database"
 # CREDENTIALS_FILE = "creds.json"  # Replace with actual credentials file
 
-CREDENTIALS_FILE = st.secrets["creds"] 
+# CREDENTIALS_FILE = st.secrets["creds"] 
 
 
 # --- SET UP GOOGLE SHEETS CONNECTION ---
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
-# Convert Streamlit secrets to dictionary
-creds_dict = json.loads(st.secrets["creds"].to_json())
+creds_dict = dict(st.secrets["creds"])
 
 # Create credentials
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+
 # credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
 client = gspread.authorize(credentials)
 sheet = client.open(GOOGLE_SHEET_NAME).sheet1
