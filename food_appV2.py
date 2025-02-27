@@ -19,7 +19,14 @@ CREDENTIALS_FILE = st.secrets["creds"]
 
 # --- SET UP GOOGLE SHEETS CONNECTION ---
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+
+# Convert Streamlit secrets to dictionary
+creds_dict = json.loads(st.secrets["creds"].to_json())
+
+# Create credentials
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
 client = gspread.authorize(credentials)
 sheet = client.open(GOOGLE_SHEET_NAME).sheet1
 
