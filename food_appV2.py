@@ -52,17 +52,17 @@ else:
 
 # --- IMAGE UPLOAD OR CAMERA ---
 st.header("📷 Upload or Take a Photo")
-option = st.radio("Choose an option:", ["Upload Photo", "Take Photo"])
+# option = st.radio("Choose an option:", ["Upload Photo", "Take Photo"])
 
-if option == "Upload Photo":
-    uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
-    if uploaded_file:
-        st.session_state["image"] = Image.open(uploaded_file)
 
-elif option == "Take Photo":
-    captured_photo = st.camera_input("Take a photo")
-    if captured_photo:
-        st.session_state["image"] = Image.open(captured_photo)
+uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png"])
+if uploaded_file:
+    st.session_state["image"] = Image.open(uploaded_file)
+
+#elif option == "Take Photo":
+#    captured_photo = st.camera_input("Take a photo")
+#    if captured_photo:
+#        st.session_state["image"] = Image.open(captured_photo)
 
 # --- DISPLAY IMAGE ---
 if st.session_state["image"]:
@@ -116,7 +116,7 @@ def analyze_food():
     - **Total Carbohydrates :** (total of Carbohydrates)g
     - **Total Fat:** (total of Fat)g
     - **Total Protein:** (total of Protein)g
-    careful I put a max_tokens=500 and the **Total Nutrition Summary:** is mandatory to get the analysis 
+    careful there is a max_tokens=500 and the **Total Nutrition Summary:** is mandatory to get the analysis 
     """
 
     response = client_openai.chat.completions.create(
